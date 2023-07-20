@@ -40,5 +40,23 @@ namespace VendorApp.Tests
             // Assert
             Assert.AreEqual(result, vendor2);
         }
+
+        [TestMethod]
+        public void AddOrder_AssociateOrderWithVendor_OrderList()
+        {
+            // Arrange
+            // Create order and add to list
+            string order1 = "BBQ Sauce";
+            Order newOrder = new(order1);
+            List<Order> newOrderList = new List<Order> { newOrder };
+            // Create vendor object
+            string vendor1 = "Jamomma's Jerk";
+            Vendor newVendor = new(vendor1);
+            newVendor.AddOrder(newOrder);
+            // Act
+            List<Order> result = newVendor.VendorOrders;
+            // Assert
+            CollectionAssert.AreEqual(result, newOrderList);
+        }
     }
 }
