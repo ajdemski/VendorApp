@@ -12,6 +12,12 @@ public class HomeController : Controller
         Vendor vendor1 = new("Jammoma's Jerk");
         Vendor vendor2 = new("O-Keto Do-Keto");
         Vendor vendor3 = new("Durpy's Slurpies");
+        Order order1 = new("BBQ Sauce");
+        Order order2 = new("Chicken");
+        Order order3 = new("Rice");
+        vendor1.AddOrder(order1);
+        vendor1.AddOrder(order2);
+        vendor1.AddOrder(order3);
         List<Vendor> allVendors = Vendor.GetAll();
         return View(allVendors);
     }
