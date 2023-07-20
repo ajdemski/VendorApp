@@ -4,10 +4,41 @@ using VendorApp.Models;
 namespace VendorApp.Tests
 {
     [TestClass]
-    public class VendorTests
+    public class CategoryTests : IDisposable
     {
+
+        public void Dispose()
+        {
+            Vendor.ClearAll();
+        }
+
         [TestMethod]
-        public void TestVendor()
-       
+        public void GetAll_ReturnsAllVendorObjects_VendorList()
+        {
+            // Arrange
+            string name1 = "Vendor1";
+            string name2 = "Vendor2";
+            Vendor vendor1 = new(name1);
+            Vendor vendor2 = new(name2);
+            List<Vendor> vendorList = new List<Vendor> { vendor1, vendor2 };
+            // Act
+            List<Vendor> result = Vendor.GetAll();
+            // Assert
+            CollectionAssert.AreEqual(vendorList, result);
+        }
+
+        [TestMethod]
+        public void Find_FindVendorById_Vendor()
+        {
+            // Arrange
+            string name1 = "Vendor1";
+            string name2 = "Vendor2";
+            Vendor vendor1 = new(name1);
+            Vendor vendor2 = new(name2);
+            // Act
+            Vendor result = Vendor.Find(2);
+            // Assert
+            Assert.AreEqual(result, vendor2);
+        }
     }
 }
