@@ -9,14 +9,14 @@ namespace VendorApp.Models
         public string Name { get; set; }
 
         public int Id { get; }
-        public List<Order> VendorOrders { get; set; }
+        public List<Order> VendorOrdersList { get; set; }
 
         public Vendor(string name)
         {
             Name = name;
             _instances.Add(this);
             Id = _instances.Count;
-            VendorOrders = new List<Order> { };
+            VendorOrdersList = new List<Order> { };
         }
         public static List<Vendor> GetAll()
         {
@@ -35,7 +35,7 @@ namespace VendorApp.Models
 
         public void AddOrder(Order order)
         {
-            VendorOrders.Add(order);
+            VendorOrdersList.Add(order);
         }
     }
 }

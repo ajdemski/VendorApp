@@ -54,7 +54,7 @@ namespace VendorApp.Tests
             Vendor newVendor = new(vendor1);
             newVendor.AddOrder(newOrder);
             // Act
-            List<Order> result = newVendor.VendorOrders;
+            List<Order> result = newVendor.VendorOrdersList;
             // Assert
             CollectionAssert.AreEqual(result, newOrderList);
         }
