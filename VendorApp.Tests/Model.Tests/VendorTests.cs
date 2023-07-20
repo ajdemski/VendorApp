@@ -6,6 +6,8 @@ namespace VendorApp.Tests
     [TestClass]
     public class VendorTests
     {
-        // Tests go here
+        [TestMethod]
+        public void TestVendor()
+       
     }
 }
