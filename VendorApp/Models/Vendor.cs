@@ -25,7 +25,7 @@ namespace VendorApp.Models
 
         public static Vendor Find(int id)
         {
-             return _instances[id-1];
+            return _instances[id - 1];
         }
 
         public static void ClearAll()
