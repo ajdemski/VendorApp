@@ -6,6 +6,15 @@ namespace VendorApp.Tests
     [TestClass]
     public class OrderTests
     {
-        // Tests go here
+        [TestMethod]
+        public void CreateOrder_ShouldSetProperties()
+        {
+            // Arrange
+            string orderName = "BBQ Sauce";
+            // Act
+            Order order = new Order(orderName);
+            // Assert
+            Assert.AreEqual(orderName, order.Name);
+        }
     }
 }
