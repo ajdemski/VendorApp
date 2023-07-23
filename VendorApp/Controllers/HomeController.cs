@@ -2,7 +2,6 @@
 using VendorApp.Models;
 
 namespace VendorApp.Controllers;
-
 public class HomeController : Controller
 {
     public ActionResult Index()
@@ -28,7 +27,7 @@ public class HomeController : Controller
         }
         return View(vendor);
     }
-    [HttpPost]
+    [HttpGet]
     [Route("vendors/{id}")]
     public ActionResult Show(int id)
     {
