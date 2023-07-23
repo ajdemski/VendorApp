@@ -12,14 +12,16 @@
   <body>
   @using VendorApp.Models;
   
-  <h1>Here are the orders for @Model["vendor"].Name</h1>
+  <h1>Here are the orders for @Model.Name</h1>
 
   <ol>
-    @foreach (Order order in @Model["orders"])
+    @foreach (Order order in @Model.VendorOrderList)
     {
-        <li><a href='/vendors/@Model["vendor"].Id/orders/@order.Id'>@order.Name</a></li>
+        <li>@order.Name</li>
     }
   </ol>
+
+  <a href="/vendors" class="btn">Back To Vendors</a>
 
 
   </body>

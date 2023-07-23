@@ -10,12 +10,15 @@ public class HomeController : Controller
         List<Vendor> allVendors = Vendor.GetAll();
         return View(allVendors);
     }
+    [HttpGet]
+    [Route("vendors/create")]
     public ActionResult Create()
     {
         return View();
     }
 
     [HttpPost]
+    [Route("vendors/create")]
     public ActionResult Create(Vendor vendor)
     {
         if (ModelState.IsValid)
@@ -25,10 +28,16 @@ public class HomeController : Controller
         }
         return View(vendor);
     }
-
-    public ActionResult Details(int id)
+    [HttpPost]
+    [Route("vendors/{id}")]
+    public ActionResult Show(int id)
     {
-        Vendor vendor = Vendor.Find(id);
-        return View(vendor);
+        Vendor selectedVendor = Vendor.Find(id);
+        if (selectedVendor == null)
+        {
+            return NotFound();
+        }
+        
+        return View("Orders", selectedVendor);
     }
 }
