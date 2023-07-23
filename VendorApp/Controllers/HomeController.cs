@@ -4,6 +4,8 @@ using VendorApp.Models;
 namespace VendorApp.Controllers;
 public class HomeController : Controller
 {
+    [HttpGet]
+    [Route("vendors")]
     public ActionResult Index()
     {
         List<Vendor> allVendors = Vendor.GetAll();
@@ -38,5 +40,32 @@ public class HomeController : Controller
         }
         
         return View("Orders", selectedVendor);
+    }
+
+    [HttpGet]
+    [Route("vendors/{id}/createOrder")]
+    public ActionResult CreateOrder(int id)
+    {
+        Vendor selectedVendor = Vendor.Find(id);
+        if (selectedVendor == null)
+        {
+            return NotFound();
+        }
+
+        return View(selectedVendor);
+    }
+
+    [HttpPost]
+    [Route("vendors/{id}/createOrder")]
+    public ActionResult CreateOrder(int id, Order order)
+    {
+        Vendor selectedVendor = Vendor.Find(id);
+        if (selectedVendor == null)
+        {
+            return NotFound();
+        }
+
+        selectedVendor.AddOrder(order);
+        return RedirectToAction("Show", new { id = selectedVendor.Id });
     }
 }

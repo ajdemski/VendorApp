@@ -1,0 +1,28 @@
+@model VendorApp.Models.Vendor
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Create New Order</title>
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" 
+        crossorigin="anonymous">
+</head>
+<body>
+    <h1>Create New Order for @Model.Name</h1>
+    
+    <form method="post" action="/vendors/@Model.Id/createOrder">
+        <div class="form-group">
+            <label for="orderName">Order Name</label>
+            <input type="text" class="form-control" id="orderName" name="Name" required>
+        </div>
+        <!-- Add more fields for other order properties here if needed -->
+        <button type="submit" class="btn">Create Order</button>
+    </form>
+
+    <a href="/vendors/@Model.Id" class="btn">Back To Vendor Details</a>
+</body>
+</html>
