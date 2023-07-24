@@ -65,7 +65,11 @@ public class HomeController : Controller
             return NotFound();
         }
 
-        selectedVendor.AddOrder(order);
+        if (ModelState.IsValid)
+        {
+            selectedVendor.AddOrder(order);
+        }
+
         return RedirectToAction("Show", new { id = selectedVendor.Id });
     }
 }
