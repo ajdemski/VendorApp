@@ -5,21 +5,21 @@ namespace VendorApp.Controllers;
 public class HomeController : Controller
 {
     [HttpGet]
-    [Route("vendors")]
+    [Route("/")]
     public ActionResult Index()
     {
         List<Vendor> allVendors = Vendor.GetAll();
         return View(allVendors);
     }
     [HttpGet]
-    [Route("vendors/create")]
+    [Route("/vendors/create")]
     public ActionResult Create()
     {
         return View();
     }
 
     [HttpPost]
-    [Route("vendors/create")]
+    [Route("/vendors/create")]
     public ActionResult Create(Vendor vendor)
     {
         if (ModelState.IsValid)
@@ -30,7 +30,7 @@ public class HomeController : Controller
         return View(vendor);
     }
     [HttpGet]
-    [Route("vendors/{id}")]
+    [Route("/vendors/{id}")]
     public ActionResult Show(int id)
     {
         Vendor selectedVendor = Vendor.Find(id);
@@ -43,7 +43,7 @@ public class HomeController : Controller
     }
 
     [HttpGet]
-    [Route("vendors/{id}/createOrder")]
+    [Route("/vendors/{id}/createOrder")]
     public ActionResult CreateOrder(int id)
     {
         Vendor selectedVendor = Vendor.Find(id);
@@ -56,7 +56,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    [Route("vendors/{id}/createOrder")]
+    [Route("/vendors/{id}/createOrder")]
     public ActionResult CreateOrder(int id, Order order)
     {
         Vendor selectedVendor = Vendor.Find(id);
